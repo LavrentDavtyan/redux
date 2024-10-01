@@ -1,0 +1,11 @@
+
+.list{
+    display: flex;
+    gap: 15px;
+}
+
+.list > div {
+    background: whitesmoke;
+    padding: 20px;
+    
+}
