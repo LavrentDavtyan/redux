@@ -19,6 +19,7 @@ npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
 - `build` - build for production
 - `preview` - locally preview production build
 - `test` - launch test runner
+- `api` - run json server
 
 ## Inspiration
 

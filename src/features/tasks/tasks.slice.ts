@@ -1,13 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { ITasks, IState } from "./types";
 
-// Fetch tasks from the server
 export const getTasks = createAsyncThunk("tasks/getTasks", async () => {
   const response = await fetch("http://localhost:5000/tasks");
   return (await response.json()) as ITasks[];
 });
 
-// Add task to the server
 export const addTask = createAsyncThunk(
   "tasks/addTask",
   async (task: Omit<ITasks, "id">) => {
@@ -20,7 +18,6 @@ export const addTask = createAsyncThunk(
   }
 );
 
-// Edit task on the server
 export const editTask = createAsyncThunk(
   "tasks/editTask",
   async (task: ITasks) => {
@@ -33,7 +30,6 @@ export const editTask = createAsyncThunk(
   }
 );
 
-// Delete task from the server
 export const deleteTask = createAsyncThunk(
   "tasks/deleteTask",
   async (id: number) => {
