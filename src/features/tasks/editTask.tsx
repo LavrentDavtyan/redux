@@ -16,27 +16,39 @@ export const EditTask = () => {
     date: new Date().toISOString().split("T")[0],
   });
 
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    dispatch(getTasks()); 
-    const taskToEdit = items.find((task) => task.id === Number(id));
-    if (taskToEdit) {
-      setForm({
-        text: taskToEdit.text,
-        status: taskToEdit.status,
-        date: taskToEdit.date,
-      });
+    if (items.length === 0) {
+      dispatch(getTasks()).then(() => setIsLoading(false));
+    } else {
+      setIsLoading(false);
     }
-  }, [id, items, dispatch]);
+  }, [dispatch, items.length]);
+
+  useEffect(() => {
+    if (!isLoading && items.length > 0) {
+      const taskToEdit = items.find((task) => task.id === id);
+      if (taskToEdit) {
+        setForm({
+          text: taskToEdit.text,
+          status: taskToEdit.status,
+          date: taskToEdit.date,
+        });
+      }
+    }
+  }, [id, items, isLoading]);
 
   const handleEditTask = () => {
     if (id) {
-      dispatch(editTask({ id: Number(id), ...form }));
-      navigate("/"); 
+      dispatch(editTask({ id: id, ...form }));
+      navigate("/");
     }
   };
 
-  return (
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : (
     <>
       <h1>Edit Task</h1>
       <div>

@@ -1,16 +1,10 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "text": "First ",
-      "status": "progress",
-      "date": "2024-09-28"
-    },
-    {
       "id": "a429",
-      "text": "new task",
-      "status": "pending",
-      "date": "2024-09-29"
+      "text": "new  edit",
+      "status": "completed",
+      "date": "2024-10-03"
     },
     {
       "id": "ba54",
